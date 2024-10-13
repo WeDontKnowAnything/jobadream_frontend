@@ -289,7 +289,7 @@ onMounted(() => {
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style>
 .customer-title:hover{
   color: rgba(var(--v-theme-primary)) !important;
 }

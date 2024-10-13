@@ -1,6 +1,6 @@
 export default [
   {
-    title: 'Home',
+    title: '홈',
     icon: { icon: 'tabler-home' },
     to: 'home',
   },
