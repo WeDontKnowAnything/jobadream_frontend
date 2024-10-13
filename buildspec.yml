@@ -15,7 +15,6 @@ phases:
       - export PNPM_HOME=$(npm root -g)/pnpm
       - export PATH=$PNPM_HOME:$PATH
       - echo Installing frontend dependencies with pnpm...
-      - cd job-a-dream-frontend # 프론트엔드 경로로 이동
       - pnpm install # pnpm을 사용해 의존성 설치
   build:
     commands:
