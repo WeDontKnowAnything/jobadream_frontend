@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AddPostView from '@/views/posts/AddPostView.vue'
+import AddPostView from '@/views/post/posts-add.vue'
 </script>
 
 <template>

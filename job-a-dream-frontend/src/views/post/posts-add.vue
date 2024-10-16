@@ -2,7 +2,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { postList } from '../../postList.js' // postList를 가져옵니다.
+import { postList } from '../../components/posts/postList.js' // postList를 가져옵니다.
 
 const title = ref('')
 const content = ref('')

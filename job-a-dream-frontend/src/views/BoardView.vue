@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { postList } from '@/postList.js' // postList를 가져옵니다.
+import { postList } from '@/components/posts/postList' // postList를 가져옵니다.
 
 const router = useRouter()
 

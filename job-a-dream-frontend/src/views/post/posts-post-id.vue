@@ -2,7 +2,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { postList } from '../../postList.js' // postList를 가져옵니다.
+import { postList } from '../../components/posts/postList.js' // postList를 가져옵니다.
 
 const route = useRoute()
 const postId = route.params.id
