@@ -10,7 +10,7 @@ export const useJobStore = defineStore(
   () => {
     // 객체, 함수 선언 스코프
     const job = ref({
-      corp_name: 'Toss',
+      corp_name: '',
       title: 'NLP Engineer, 생성형 AI',
       position: '기획',
       location: '서울',
@@ -21,7 +21,7 @@ export const useJobStore = defineStore(
 
     const jobList = ref([{
       id: '12',
-      corp_name: 'Toss',
+      corp_name: '',
       title: 'NLP Engineer, 생성형 AI',
       position: '기획',
       location: '서울',

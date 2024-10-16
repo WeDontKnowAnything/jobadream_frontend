@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
+import { computed, onMounted, ref } from 'vue'
+import { VCardText } from 'vuetify/lib/components/index.mjs'
 import { useJobStore } from '@/stores/jobStore'
 
 const jobStore = useJobStore()
@@ -56,6 +58,22 @@ const totalJobs = computed(() => jobList.value.length)
 onMounted(() => {
   jobStore.getJobList()
 })
+
+// 더미 데이터 예시
+const jobCategories = ref({
+  preparing: [
+    { date: '2024-10-10', title: '백엔드 개발자 채용' },
+    { date: '2024-10-15', title: '프론트엔드 개발자 채용' },
+  ],
+  inProgress: [
+    { date: '2024-10-05', title: '디자이너 채용' },
+    { date: '2024-10-07', title: '마케팅 매니저 채용' },
+  ],
+  closingSoon: [
+    { date: '2024-10-09', title: '회계팀 사원 채용' },
+    { date: '2024-10-08', title: 'HR 매니저 채용' },
+  ],
+})
 </script>
 
 <template>
@@ -80,6 +98,7 @@ onMounted(() => {
         <!-- 👉 stepper content -->
         <VCol
           cols="12"
+
           md="9"
         >
           <VCardText>
@@ -179,7 +198,6 @@ onMounted(() => {
                   @click="currentStep++"
                 >
                   다음
-
                   <VIcon
                     icon="tabler-arrow-right"
                     end
@@ -191,6 +209,73 @@ onMounted(() => {
           </VCardText>
         </VCol>
       </VRow>
+    </VCard>
+
+    <!-- 기업 정보 카테고리별 표시 -->
+    <VCard class="mb-6">
+      <VCardTitle>
+        기업 정보
+      </VCardTitle>
+      <VCardText>
+        <VRow>
+          <VCol
+            cols="12"
+            md="4"
+          >
+            <VCard outlined>
+              <VCardTitle>채용 예정</VCardTitle>
+              <VCardText>
+                <ul>
+                  <li
+                    v-for="(job, index) in jobCategories.preparing"
+                    :key="index"
+                  >
+                    {{ job.date }} - {{ job.title }}
+                  </li>
+                </ul>
+              </VCardText>
+            </VCard>
+          </VCol>
+
+          <VCol
+            cols="12"
+            md="4"
+          >
+            <VCard outlined>
+              <VCardTitle>채용 중</VCardTitle>
+              <VCardText>
+                <ul>
+                  <li
+                    v-for="(job, index) in jobCategories.inProgress"
+                    :key="index"
+                  >
+                    {{ job.date }} - {{ job.title }}
+                  </li>
+                </ul>
+              </VCardText>
+            </VCard>
+          </VCol>
+
+          <VCol
+            cols="12"
+            md="4"
+          >
+            <VCard outlined>
+              <VCardTitle>마감 직전</VCardTitle>
+              <VCardText>
+                <ul>
+                  <li
+                    v-for="(job, index) in jobCategories.closingSoon"
+                    :key="index"
+                  >
+                    {{ job.date }} - {{ job.title }}
+                  </li>
+                </ul>
+              </VCardText>
+            </VCard>
+          </VCol>
+        </VRow>
+      </VCardText>
     </VCard>
 
     <!-- 채용공고 카드 -->
@@ -230,16 +315,6 @@ onMounted(() => {
                 />
                 <span class="text-subtitle-2 text-white mt-1">{{ data.location }}</span>
               </span>
-              <!--
-                <span>
-                <IconBtn
-                icon="tabler-user-circle"
-                color="white"
-                class="me-1"
-                />
-                <span class="text-subtitle-2 text-white mt-1">{{ data.experience_type }}</?span>
-                </span>
-              -->
               <span>
                 <IconBtn
                   icon="tabler-layout-align-bottom"
@@ -288,14 +363,3 @@ onMounted(() => {
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.customer-title:hover{
-  color: rgba(var(--v-theme-primary)) !important;
-}
-
-.product-widget{
-  border-block-end: 1px solid rgba(var(--v-theme-on-surface), var(--v-border-opacity));
-  padding-block-end: 1rem;
-}
-</style>

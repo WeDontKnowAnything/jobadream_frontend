@@ -1,32 +1,45 @@
 import type { RouteRecordRaw } from 'vue-router/auto'
+import Posts from '../../views/BoardView.vue'
+import PostsAdd from '../../views/post/posts-add.vue'
+import PostsEdit from '../../views/post/posts-edit.vue'
+import PostsPostId from '../../views/post/posts-post-id.vue'
 
 // 👉 Redirects
 export const redirects: RouteRecordRaw[] = [
-  // ℹ️ We are redirecting to different pages based on role.
-  // NOTE: Role is just for UI purposes. ACL is based on abilities.
+  // 기존 내용은 그대로 유지합니다.
   {
     path: '/',
     name: 'index',
     redirect: () => {
-      // // TODO: Get type from backend
-      // const userData = useCookie<Record<string, unknown> | null | undefined>('userData')
-      // const userRole = userData.value?.role
-
-      // if (userRole === 'admin')
-      //   return { name: 'dashboards-crm' }
-      // if (userRole === 'client')
-      //   return { name: 'access-control' }
-
-      // return { name: 'login', query: to.query }
       return { name: 'home' }
     },
   },
 
-  // {
-  //   path: '/pages/account-settings',
-  //   name: 'pages-account-settings',
-  //   redirect: () => ({ name: 'pages-account-settings-tab', params: { tab: 'account' } }),
-  // },
+  // 필요에 따라 다른 리다이렉트도 유지합니다.
 ]
 
-export const routes: RouteRecordRaw[] = []
+// 👉 Routes
+export const routes: RouteRecordRaw[] = [
+  {
+    path: '/posts',
+    name: 'posts',
+    component: Posts,
+  },
+  {
+    path: '/posts/add',
+    name: 'posts-add',
+    component: PostsAdd,
+  },
+  {
+    path: '/posts/edit/:id',
+    name: 'posts-edit',
+    component: PostsEdit,
+    props: true,
+  },
+  {
+    path: '/posts/:id',
+    name: 'posts-post-id',
+    component: PostsPostId,
+    props: true,
+  },
+]

@@ -27,6 +27,20 @@ const statistics = [
     color: 'success',
   },
 ]
+
+// 지원자 수 TOP10 더미 데이터
+const top10Applicants = ref([
+  { name: '기업 A', applicants: 150, location: '서울', position: '백엔드 개발자' },
+  { name: '기업 B', applicants: 140, location: '경기', position: '프론트엔드 개발자' },
+  { name: '기업 C', applicants: 130, location: '부산', position: '디자이너' },
+  { name: '기업 D', applicants: 120, location: '인천', position: '마케팅 매니저' },
+  { name: '기업 E', applicants: 110, location: '대구', position: '데이터 분석가' },
+  { name: '기업 F', applicants: 100, location: '광주', position: 'HR 매니저' },
+  { name: '기업 G', applicants: 90, location: '대전', position: '제품 기획자' },
+  { name: '기업 H', applicants: 80, location: '울산', position: '영업 매니저' },
+  { name: '기업 I', applicants: 70, location: '세종', position: '회계' },
+  { name: '기업 J', applicants: 60, location: '강원', position: '리서치' },
+])
 </script>
 
 <template>
@@ -41,7 +55,7 @@ const statistics = [
           </VRow>
         </VCardText>
         <VCardText>
-          <h6 class=" text-h6">
+          <h6 class="text-h6">
             당신의 꿈을 "잡아 드림"
           </h6>
         </VCardText>
@@ -53,11 +67,38 @@ const statistics = [
             본 사이트는 취업 준비생들이 취업에 필요한 정보를 한눈에 볼 수 있도록 제공합니다.
           </section>
           <section>
-            여러 채용 플랫폼에서 공고를 찾으러 다니지 않도록 Job A Dream에서 해당 기업의 채용공고를 한 눈이 볼 수 있도록 제공해드립니다.
+            여러 채용 플랫폼에서 공고를 찾으러 다니지 않도록 Job A Dream에서 해당 기업의 채용공고를 한 눈에 볼 수 있도록 제공해드립니다.
           </section>
         </VCardText>
       </VCard>
     </VCol>
+
+    <!-- 지원자 수 TOP10 섹션 -->
+    <VCol cols="12">
+      <VCard title="지원자 수 TOP10">
+        <VCardText>
+          <VRow>
+            <VCol
+              v-for="(company, index) in top10Applicants"
+              :key="index"
+              cols="6"
+              md="5"
+              lg="3"
+            >
+              <VCard outlined>
+                <VCardTitle>{{ company.name }}</VCardTitle>
+                <VCardText>
+                  <p>지원자 수: {{ company.applicants }}</p>
+                  <p>위치: {{ company.location }}</p>
+                  <p>포지션: {{ company.position }}</p>
+                </VCardText>
+              </VCard>
+            </VCol>
+          </VRow>
+        </VCardText>
+      </VCard>
+    </VCol>
+
     <VCol cols="12">
       <VCard title="사이트 정보">
         <template #append>

@@ -35,6 +35,7 @@ onMounted(() => {
       <!-- 👉 Widgets  -->
       <VCol
         cols="12"
+        md="6"
         class="d-flex px-6 py-6 align-end"
       >
         <AppTextField
